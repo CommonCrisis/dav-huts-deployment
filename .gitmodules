@@ -1,0 +1,8 @@
+[submodule "dav-huts"]
+	path = dav-huts
+	url = https://github.com/CommonCrisis/dav-huts
+	branch = develop
+[submodule "dav-huts-frontend"]
+	path = dav-huts-frontend
+	url = https://github.com/CommonCrisis/dav-huts-frontend
+	branch = master

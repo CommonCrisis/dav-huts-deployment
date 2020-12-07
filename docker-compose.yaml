@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: dav-backend
+    build:
+      context: ./dav-huts/
+      dockerfile: Dockerfile
+    ports:
+      - "54321:54321"
+  frontend:
+    container_name: dav-ui
+    build:
+      context: ./dav-huts-frontend/
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
