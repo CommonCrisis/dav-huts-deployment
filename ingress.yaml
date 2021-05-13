@@ -1,0 +1,36 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dav-ingress
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    acme.cert-manager.io/http01-edit-in-place: "true"
+spec:
+  ingressClassName: public
+  tls:
+    - hosts:
+        - api.dav-huts.eu
+        - dav-huts.eu
+      secretName: dav-huts-tls
+  rules:
+    - host: api.dav-huts.eu
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dav-backend-svc
+                port:
+                  number: 80
+    - host: dav-huts.eu
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dav-frontend-svc
+                port:
+                  number: 80

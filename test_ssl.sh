@@ -1,0 +1,1 @@
+wget --save-headers -O- dav-huts.eu
